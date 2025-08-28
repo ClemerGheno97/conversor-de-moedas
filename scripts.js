@@ -1,42 +1,67 @@
 const convertButton = document.querySelector(".convert-button")
-const moedaSelect = document.querySelector(".moeda-select")
+const currencySelect = document.querySelector(".currency-select")
 
 function convertValues() {
-    const inputValor = document.querySelector(".input-valor").value
-    const moedaConverter = document.querySelector(".valor-section")
-    const moedaConvertida = document.querySelector(".valor-section-convertido")
+    const inputvalue = document.querySelector(".input-value").value
+    const currencyConvert = document.querySelector(".value-section")
+    const currencyConverted = document.querySelector(".value-section-converted")
 
-    console.log(moedaSelect.value)
-    const dolarToday = 5.4427989
-    const euroToday = 6.3095
-    const libraToday = 7.3309
+    console.log(currencySelect.value)
+    const realToday = 0.18
+    const dolarToday = 5.41
+    const euroToday = 6.33
+    const libraToday = 7.30
 
-    moedaConverter.innerHTML = new Intl.NumberFormat("pt-BR", {
+    currencyConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: "BRL"
-    }).format(inputValor)
+    }).format(inputvalue)
 
-    if (moedaSelect.value == "dolar") {
-        moedaConvertida.innerHTML = new Intl.NumberFormat("en-US", {
+    if (currencySelect.value == "dolar") {
+        currencyConverted.innerHTML = new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "USD"
-        }).format(inputValor / dolarToday)
+        }).format(inputvalue / dolarToday)
     }
 
-    if (moedaSelect.value == "euro") {
-        moedaConvertida.innerHTML = new Intl.NumberFormat("de-DE", {
+    if (currencySelect.value == "euro") {
+        currencyConverted.innerHTML = new Intl.NumberFormat("de-DE", {
             style: "currency",
             currency: "EUR"
-        }).format(inputValor / euroToday)
+        }).format(inputvalue / euroToday)
     }
 
-    if (moedaSelect.value == "libra") {
-        moedaConvertida.innerHTML = new Intl.NumberFormat('en-GB', {
-            style: 'currency',
-            currency: 'GBP'
-        }).format(inputValor / libraToday)
+    if (currencySelect.value == "libra") {
+        currencyConverted.innerHTML = new Intl.NumberFormat("en-GB", {
+            style: "currency",
+            currency: "GBP"
+        }).format(inputvalue / libraToday)
     }
 
 }
 
+function changeCurrency() {
+    const nameCurrency = document.getElementById("name-currency")
+    const imgcurrency = document.querySelector(".img-currency")
+
+
+     if (currencySelect.value == "dolar") {
+        nameCurrency.innerHTML = "Dolar Americano"
+        imgcurrency.src = "./assets/dolar.png"
+     }
+
+     if (currencySelect.value == "euro") {
+        nameCurrency.innerHTML = "Euro"
+        imgcurrency.src = "./assets/euro.png"
+     }
+
+     if (currencySelect.value == "libra") {
+        nameCurrency.innerHTML = "Libra"
+        imgcurrency.src = "./assets/libra.png"
+     }
+
+    convertValues()
+}
+
+currencySelect.addEventListener("change", changeCurrency)
 convertButton.addEventListener("click", convertValues)
