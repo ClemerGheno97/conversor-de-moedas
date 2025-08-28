@@ -7,9 +7,9 @@ function convertValues() {
     const moedaConvertida = document.querySelector(".valor-section-convertido")
 
     console.log(moedaSelect.value)
-    const dolarToday = 5.20
-    const euroToday = 6.20
-    const libraToday = 3.20
+    const dolarToday = 5.4427989
+    const euroToday = 6.3095
+    const libraToday = 7.3309
 
     moedaConverter.innerHTML = new Intl.NumberFormat("pt-BR", {
         style: "currency",
