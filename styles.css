@@ -59,6 +59,15 @@ input {
     color: #555;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    display: none;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 button {
     width: 327px;
     height: 48px;
